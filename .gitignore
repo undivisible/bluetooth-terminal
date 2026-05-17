@@ -1,0 +1,17 @@
+.DS_Store
+*.xcodeproj
+.build/
+.brisk/DerivedData/
+*.xcuserstate
+**/xcuserdata/
+*.xccheckout
+*.moved-aside
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+timeline.xctimeline
+playground.xcworkspace
+.swiftpm/
+Package.resolved
+DerivedData/

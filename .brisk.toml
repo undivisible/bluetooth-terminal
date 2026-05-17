@@ -1,0 +1,37 @@
+dependencies = []
+
+[package]
+name = "BluetoothTerminal"
+version = "1.0.0"
+
+[app]
+bundle_id = "company.atechnology.bluetooth-terminal"
+deployment_target = "17.0"
+sources = "bluetooth terminal"
+resources = []
+asset_catalogs = ["bluetooth terminal/Assets.xcassets"]
+app_icon = "AppIcon"
+frameworks = ["CoreBluetooth"]
+linker_flags = []
+swift_flags = []
+
+[app.info]
+NSBluetoothAlwaysUsageDescription = "This app needs Bluetooth to connect to and communicate with BLE devices like JDY-23 modules."
+NSBluetoothPeripheralUsageDescription = "This app needs Bluetooth to connect to BLE peripheral devices."
+
+[build]
+architectures = ["arm64"]
+platform = "ios"
+
+[signing]
+identity = "-"
+hardened_runtime = false
+team_id = "LZ3NL5434Q"
+notarize = false
+
+[test]
+sources = "BluetoothTerminalTests"
+xctest = true
+
+[archive]
+zip = false
