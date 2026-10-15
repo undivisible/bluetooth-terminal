@@ -15,8 +15,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install XcodeGen
-        run: brew install xcodegen
+      - name: Install XcodeGen and LuaJIT
+        run: brew install xcodegen luajit
 
       - name: Generate Xcode project
         run: xcodegen generate
@@ -24,9 +24,7 @@ jobs:
       - name: Build and test
         run: |
           DEVICE_ID=$(xcrun simctl list devices available -j \
-            | python3 -c "import json,sys; d=json.load(sys.stdin); \
-          print(next(dev['udid'] for runtime,devs in d['devices'].items() if 'iOS' in runtime and 'SimRuntime' in runtime \
-            for dev in devs if dev.get('isAvailable') and 'iPhone' in dev.get('name','')))")
+            | luajit .github/scripts/select-ios-device.lua)
           xcodebuild test \
             -project BluetoothTerminal.xcodeproj \
             -scheme BluetoothTerminal \
